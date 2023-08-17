@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * @file
+ * Comment.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_alter().
+ */
+function config_task_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // print_r($form_id);
+  // exit;
+  // Check if the form being altered is the 'node_article_form'.
+  if ($form_id == 'node_article_form') {
+    // Get configuration values.
+    $config = \Drupal::config('config_task.settings');
+    $title = $config->get('title');
+    $advanced = $config->get('advanced');
+    $tax = $config->get('tax');
+
+    // print_r(array_keys($form));
+    // exit;
+    // print_r(array($form['title']));
+    // exit;
+    // Set the default value for the 'title' field.
+    $form['title']['widget'][0]['value']['#default_value'] = $title;
+    // If a taxonomy term is selected, set default value for 'field_tags' field.
+    if ($tax) {
+      // Load the taxonomy term entity based on the stored tax ID.
+      $tax = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($tax);
+      $form['field_tags']['widget']['target_id']['#default_value'] = $tax;
+    }
+    // Set the default value for the 'field_advanced' checkbox field.
+    $form['field_advanced']['widget']['value']['#default_value'] = $advanced;
+  }
+}

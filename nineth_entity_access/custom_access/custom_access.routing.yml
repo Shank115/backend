@@ -1,0 +1,7 @@
+custom_access.settings_form:
+  path: '/admin/config/system/custom-access'
+  defaults:
+    _title: 'custom_access settings'
+    _form: 'Drupal\custom_access\Form\CustomAccessControlForm'
+  requirements:
+    _permission: 'administer custom_access configuration'

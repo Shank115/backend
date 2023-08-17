@@ -1,0 +1,66 @@
+<?php
+
+/**
+ * @file
+ * Contains custom_mail.module..
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Implements hook_mail().
+ */
+function task_module_mail($key, &$message, $params) {
+  $options = [
+    'langcode' => $message['langcode'],
+  ];
+
+  switch ($key) {
+    case 'create_page':
+      $message['from'] = \Drupal::config('system.site')->get('mail');
+      $message['subject'] = $params['subject'];
+      $message['body'][] = $params['message'];
+      break;
+  }
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function task_module_entity_insert(EntityInterface $entity) {
+
+  if ($entity->getEntityTypeId() !== 'node' || ($entity->getEntityTypeId() === 'node' && $entity->bundle() !== 'page')) {
+    return;
+  }
+
+  $mailManager = \Drupal::service('plugin.manager.mail');
+
+  $module = 'task_module';
+  $key = 'create_page';
+  $to = \Drupal::currentUser()->getEmail();
+  $config = \Drupal::config('task_module.settings');
+  $content = $config->get('textarea');
+  $replaced_content = \Drupal::token()->replace($content, ['node' => $entity], ['clear' => TRUE]);
+  $params['message'] = $replaced_content;
+  $params['node_title'] = $entity->label();
+  $langcode = \Drupal::currentUser()->getPreferredLangcode();
+  $send = TRUE;
+
+  $result = $mailManager->mail($module, $key, $to, $langcode, $params, NULL, $send);
+  if ($result['result'] !== TRUE) {
+
+    \Drupal::messenger()->addMessage(t('There was a problem sending your message and it was not sent'), 'error');
+  }
+  else {
+
+    \Drupal::messenger()->addMessage(t('There was a problem sending your message and it was not sent'), 'status');
+    // drupal_set_message(t('Your message has been sent.'));.
+  }
+}
+
+/**
+ * Implements hook_alter().
+ */
+function task_module_alter(&$message) {
+  $message['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed; delsp=yes';
+}

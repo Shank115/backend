@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * @file
+ * Comment.
+ */
+
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_ENTITY_TYPE_access().
+ *
+ * Implements access control logic for nodes based on role and content types.
+ */
+function custom_access_node_access(NodeInterface $node, $operation, AccountInterface $account) {
+  if ($operation === 'view') {
+    // Get the configuration values from custom_access.settings configuration.
+    $config = \Drupal::config('custom_access.settings');
+    $role = $config->get('role');
+    $content_types = $config->get('content_types');
+
+    // Check if the user's role is allowed or if node's content type is allowed.
+    if (!in_array($role, $account->getRoles())) {
+      // User's role is not in the allowed role, so allow access.
+      return AccessResult::allowed();
+    }
+    if (in_array($node->bundle(), $content_types)) {
+      // Node's content type is in the allowed content types, so allow access.
+      return AccessResult::allowed();
+    }
+    else {
+      // Node's content type is not in the allowed content types, deny access.
+      return AccessResult::forbidden();
+    }
+  }
+
+  // For other operations, return a neutral access result.
+  return AccessResult::neutral();
+}

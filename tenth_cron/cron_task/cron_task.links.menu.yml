@@ -1,0 +1,6 @@
+cron_task.settings_form:
+  title: 'cron_task'
+  description: 'Configure cron_task.'
+  parent: system.admin_config_system
+  route_name: cron_task.settings_form
+  weight: 10

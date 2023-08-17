@@ -1,0 +1,16 @@
+shape.taskcontroller: #machine name
+  path: '/shape-task'  #giving path to CustomController.php
+  defaults:
+    _controller: '\Drupal\shape\Controller\TaskController::loadingValue' #path and function name is defined here
+    _title: 'Task Exercise' #title given for controller.php
+  requirements:
+    _permission: 'access content' #permission created for controller
+
+
+shape.refcontroller: #machine name
+  path: '/shape-ref-task'  #giving path to CustomController.php
+  defaults:
+    _controller: '\Drupal\shape\Controller\RefControl::loadingValue' #path and function name is defined here
+    _title: 'Ref Exercise' #title given for controller.php
+  requirements:
+    _permission: 'access content' #permission created for controller

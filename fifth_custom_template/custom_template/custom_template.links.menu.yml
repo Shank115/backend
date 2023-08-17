@@ -1,0 +1,6 @@
+custom_template.settings_form:
+  title: 'custom_template'
+  description: 'Configure custom_template.'
+  parent: system.admin_config_system
+  route_name: custom_template.settings_form
+  weight: 10

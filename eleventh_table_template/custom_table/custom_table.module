@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * It is.
+ */
+
+/**
+ * Implements hook_theme().
+ *
+ * Defines the theme for the custom_table module.
+ */
+function custom_table_theme($existing, $type, $theme, $path) {
+
+  // The table theme.
+  return [
+    'table_theme' => [
+      'variables' => [
+        'rows' => [],
+      ],
+    ],
+  ];
+}

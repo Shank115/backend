@@ -1,0 +1,8 @@
+# Schema for the configuration files of the custom_access module.
+custom_access.settings:
+  type: config_object
+  label: 'custom_access settings'
+  mapping:
+    example:
+      type: string
+      label: 'Example'

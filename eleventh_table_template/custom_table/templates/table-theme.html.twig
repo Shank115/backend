@@ -1,0 +1,18 @@
+<table>
+	<tr>
+		<td>firstname</td>
+		<td>lastame</td>
+		<td>email</td>
+		<td>phonenumber</td>
+		<td>gender</td>
+	</tr>
+	{% for row in rows %}
+		<tr>
+			<td>{{ row.firstname }}</td>
+			<td>{{ row.lastname }}</td>
+			<td>{{ row.email }}</td>
+			<td>{{ row.phonenumber }}</td>
+			<td>{{ row.gender }}</td>
+		</tr>
+    {% endfor %}
+</table>

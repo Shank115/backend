@@ -1,0 +1,15 @@
+custom_template.example:
+  path: '/custom-template/example'
+  defaults:
+    _title: 'Example'
+    _controller: '\Drupal\custom_template\Controller\CustomTemplateController::displayTemplate'
+  requirements:
+    _permission: 'access content'
+
+custom_template.settings_form:
+  path: '/admin/config/system/custom-template'
+  defaults:
+    _title: 'custom_template settings'
+    _form: 'Drupal\custom_template\Form\SettingsForm'
+  requirements:
+    _permission: 'administer custom_template configuration'

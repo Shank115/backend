@@ -1,0 +1,8 @@
+# Schema for the configuration files of the cron_task module.
+cron_task.settings:
+  type: config_object
+  label: 'cron_task settings'
+  mapping:
+    example:
+      type: string
+      label: 'Example'

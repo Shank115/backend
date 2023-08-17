@@ -1,0 +1,6 @@
+custom_access.settings_form:
+  title: 'custom_access'
+  description: 'Configure custom_access.'
+  parent: system.admin_config_system
+  route_name: custom_access.settings_form
+  weight: 10

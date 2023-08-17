@@ -1,0 +1,6 @@
+config_task.settings_form:
+  title: 'config_task'
+  description: 'Configure config_task.'
+  parent: system.admin_config_system
+  route_name: config_task.settings_form
+  weight: 10

@@ -1,0 +1,8 @@
+# Schema for the configuration files of the custom_template module.
+custom_template.settings:
+  type: config_object
+  label: 'custom_template settings'
+  mapping:
+    example:
+      type: string
+      label: 'Example'

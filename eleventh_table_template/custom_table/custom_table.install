@@ -1,0 +1,77 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the custom_table module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function custom_table_install() {
+  \Drupal::messenger()->addStatus(__FUNCTION__);
+
+  // Create the user_details table.
+  $schema = custom_table_schema();
+  \Drupal::database()->schema()->createTable('user_details', $schema);
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function custom_table_uninstall() {
+  \Drupal::messenger()->addStatus(__FUNCTION__);
+
+  // Drop the user_details table.
+  \Drupal::database()->schema()->dropTable('user_details');
+}
+
+/**
+ * Implements hook_schema().
+ */
+function custom_table_schema() {
+
+  $schema['user_details'] = [
+    // Description for table.
+    'description' => 'Stores user details',
+    'fields' => [
+      'id' => [
+        'description' => 'serial number',
+        'type' => 'serial',
+        'not null' => TRUE,
+      ],
+      'firstname' => [
+        'description' => 'Firstname of the user',
+        'type' => 'varchar',
+        'length' => 60,
+        'not null' => TRUE,
+      ],
+      'lastname' => [
+        'description' => 'Last Name of the user',
+        'type' => 'varchar',
+        'length' => 60,
+        'not null' => TRUE,
+      ],
+      'email' => [
+        'description' => 'Email of the user',
+        'type' => 'varchar',
+        'length' => 60,
+        'not null' => TRUE,
+      ],
+      'phonenumber' => [
+        'description' => 'phone number of the user',
+        'type' => 'varchar',
+        'length' => 60,
+        'not null' => TRUE,
+      ],
+      'gender' => [
+        'description' => 'gender of the user',
+        'type' => 'varchar',
+        'length' => 60,
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+  return $schema;
+}

@@ -1,0 +1,15 @@
+custom_table.example:
+  path: '/custom-table/example'
+  defaults:
+    _title: 'Example'
+    _controller: '\Drupal\custom_table\Controller\CustomTableController::build'
+  requirements:
+    _permission: 'access content'
+
+custom_table.addform:
+    path: '/custom-form'
+    defaults:
+        _form: '\Drupal\custom_table\Form\CustomForm'
+        _title: 'Check'
+    requirements:
+        _permission: 'access content'

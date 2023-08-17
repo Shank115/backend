@@ -1,0 +1,8 @@
+# Schema for the configuration files of the config_task module.
+config_task.settings:
+  type: config_object
+  label: 'config_task settings'
+  mapping:
+    example:
+      type: string
+      label: 'Example'

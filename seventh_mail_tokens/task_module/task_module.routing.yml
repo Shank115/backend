@@ -1,0 +1,7 @@
+custom_cron.settings:
+  path: '/custom-form'
+  defaults:
+    _title: 'Settings'
+    _form: 'Drupal\task_module\Form\SettingsForm'
+  requirements:
+    _permission: 'access content'

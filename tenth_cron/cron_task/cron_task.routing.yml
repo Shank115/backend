@@ -1,0 +1,7 @@
+cron_task.settings_form:
+  path: '/admin/config/system/cron-task'
+  defaults:
+    _title: 'cron_task settings'
+    _form: 'Drupal\cron_task\Form\SettingsForm'
+  requirements:
+    _permission: 'administer cron_task configuration'

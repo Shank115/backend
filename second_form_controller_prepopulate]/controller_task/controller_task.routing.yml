@@ -1,0 +1,12 @@
+controller_task.example:
+  path: '/node/{node}/details'
+  defaults:
+    _title: 'controller'
+    _controller: '\Drupal\controller_task\Controller\ControllerTaskController::task'
+  requirements:
+    _permission: 'static perm for controller'
+  options:
+    _admin_route: TRUE
+    parameters:
+      node:
+        type: entity:node
