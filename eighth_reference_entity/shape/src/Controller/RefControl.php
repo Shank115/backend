@@ -17,19 +17,19 @@ class RefControl extends ControllerBase {
    *   The concatenated details.
    */
   public function loadingValue() {
-    $node_id = 2;
+    $node_id = 38;
     $node = Node::load($node_id);
     // $details = '';
     if ($node) {
       $nodeTitle = $node->getTitle();
 
       $taxonomy = $node->get('field_color')->referencedEntities();
-      $tax = reset($taxonomy);
-      $term = $tax->getName();
+      $taxonomyTerm = reset($taxonomy);
+      $term = $taxonomyTerm->getName();
 
-      $userValue = $tax->get('field_user_ref')->referencedEntities();
-      $user = reset($userValue);
-      $name = $user->getDisplayName();
+      $username = $taxonomyTerm->get('field_user_ref')->referencedEntities();
+      $userTerm = reset($username);
+      $name = $userTerm->getDisplayName();
 
       $details = "$nodeTitle . $term . $name ";
 

@@ -1,0 +1,7 @@
+custom.form:
+  path: '/last-name'
+  defaults:
+    _form: '\Drupal\thirteenth_form_checkbox\Form\CustomForm'
+    _title: 'Name and Last name'
+  requirements:
+    _permission: 'access content'

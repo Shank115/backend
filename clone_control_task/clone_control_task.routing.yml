@@ -1,0 +1,7 @@
+clone_control_task.example:
+  path: '/clone-control-task/example'
+  defaults:
+    _title: 'Clone'
+    _controller: '\Drupal\clone_control_task\Controller\CloneControlTaskController::build'
+  requirements:
+    _permission: 'access content'
