@@ -61,7 +61,7 @@ class CustomForm extends FormBase {
 
     $form['has_last_name'] = [
       '#type' => 'checkbox',
-      '#title' => $this->t('SAme name'),
+      '#title' => $this->t('SAme name it  is'),
       '#attributes' => ['id' => 'has-last-name'],
     ];
 
