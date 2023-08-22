@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * Comment.
+ */
+
+use Drupal\node\NodeInterface;
+use Drupal\Core\Cache\Cache;
+
+/**
+ * Implements hook_entity_presave() for nodes.
+ */
+function sixteen_cache_node_presave(NodeInterface $node) {
+  if ($node->getType() == 'Food') {
+
+    $tags = 'markten:' . $node->id();
+
+    Cache::invalidateTags([$tags]);
+  }
+}

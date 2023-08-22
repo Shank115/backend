@@ -11,7 +11,7 @@
 function fourteeth_clonenode_view_views_data_alter(&$data) {
   $data['node']['node_link'] = [
     'title' => t('view node'),
-    'help' => t('Helllloooooooooooooo'),
+    'help' => t('This is view node'),
     'field' => [
       'id' => 'fourteeth_clonenode_view',
     ],

@@ -1,0 +1,22 @@
+<?php
+
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Url;
+/**
+ * @file
+ * Primary module hooks for fifteenth_controller_task module.
+ */
+
+function fifteenth_controller_task_entity_operation(EntityInterface $entity) {
+  $operations = [];
+
+  if ($entity->getEntityTypeId() === 'node') {
+    $operations['title_controller'] = [
+      'title' => "Node Title Controller",
+      'weight' => 0,
+      'url' => Url::fromRoute('fifteenth_controller_task.example', ['node' => $entity->id()],)
+    ];
+  }
+  return $operations;
+}

@@ -1,0 +1,9 @@
+fifteenth_controller_task.example:
+  path: '/node/{node}/title'
+  defaults:
+    _controller: '\Drupal\fifteenth_controller_task\Controller\FifteenthControllerTaskController::nodeTitle'
+  requirements:
+    _permission: 'access content'
+  parameters:
+    node:
+      type: entity:node
