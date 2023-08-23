@@ -1,0 +1,5 @@
+name: 'seventeenth_drush_task'
+type: module
+description: 'Drush task'
+package: Custom
+core_version_requirement: ^10
